@@ -7,7 +7,17 @@ import asyncio
 from typing import List
 
 from .variables import *
-from python_strip_whitespace import minify_html
+try:
+    from python_strip_whitespace import minify_html
+except ImportError:
+    raise ImportError(
+        """
+            Did you install the latest python_strip_whitespace?
+            
+            If not install it by:
+                python -m pip install python_strip_whitespace
+        """
+    )
 
 from django.conf import settings
 from django.utils.decorators import sync_and_async_middleware
@@ -34,6 +44,7 @@ def html_strip_whitespace(get_response):
             if not response.streaming and not request.path in ignored_paths:
                 content = minify_html(
                     response.content,
+                    # Rust
                     STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE,
                     STRIP_WHITESPACE_RUST_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES,
                     STRIP_WHITESPACE_RUST_KEEP_CLOSING_TAGS,
@@ -65,6 +76,7 @@ def html_strip_whitespace(get_response):
             if not response.streaming and not request.path in ignored_paths:
                 content = minify_html(
                     response.content,
+                    # Rust
                     STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE,
                     STRIP_WHITESPACE_RUST_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES,
                     STRIP_WHITESPACE_RUST_KEEP_CLOSING_TAGS,
