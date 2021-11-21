@@ -37,7 +37,7 @@ Why use "django_stip_whitespace" ?
 *   Is very customizable. ( You can configure lower level `minify-html <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ rust bindings and also the lower level `python <https://github.com/juancarlospaco/css-html-js-minify/blob/master/css_html_js_minify/html_minifier.py/>`_ bindings from settings.py )
 
 
-Why souldn't you use django_stip_whitespace ?
+Why souldn't you use "django_stip_whitespace "?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *   Adds unnecessary ';;' in HTML. ( If you know any regex to fix this please put a pull request )
 
@@ -47,7 +47,7 @@ Why souldn't you use django_stip_whitespace ?
 Requirements :
 --------------
 
-*    python-strip-whitespace
+*    `python-strip-whitespace <https://github.com/baseplate-admin/python_strip_whitespace>`_
 *    Django > 3 ( Should work with version 2? )
 *    Python 3 ( Should work with all version? )
 *    Brotli ( or BrotliPy ) | ( Optional )
@@ -199,6 +199,6 @@ If you like this project add a star.
 If you have problems or suggestions please put them in the `Issue Tracker <https://github.com/baseplate-admin/django_strip_whitespace/issues>`__.
 If you like to add features. Fork this repo and submit a Pull Request. 😛
 
-Roadmap :
-=========
-You tell me. If i have free time, I will implement it.
+Updates ?? :
+===========
+This repository is freezed. It will automatically install latest `python-strip-whitespace <https://github.com/baseplate-admin/python_strip_whitespace>`_
