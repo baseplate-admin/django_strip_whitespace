@@ -23,12 +23,12 @@ extras_require = {
 
 install_requires = [
     "django>3",
-    "python-strip-whitespace>0.0.2",
+    "python-strip-whitespace>=0.0.3",
 ]
 
 setup_kwargs = setup(
     name="django-strip-whitespace",
-    version="0.0.24",
+    version="0.0.25",
     description="A powerful HTML whitespace remover for Django",
     long_description=long_description,
     author="baseplate-admin",
