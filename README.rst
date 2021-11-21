@@ -39,7 +39,7 @@ Why use "django_stip_whitespace" ?
 
 Why souldn't you use "django_stip_whitespace "?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*   Adds unnecessary ';;' in HTML. ( If you know any regex to fix this please put a pull request )
+*   You don't like having unnecessary ';;' in your HTML. ( If you know any regex to fix this please put a pull request )
 
 *   Although I tried my best to use Compiled Language for Optimizations. It can still be sub miliseconds ( > 0.001 ) slower compared to normal Django Rendering. ( If you know any way to improve performance, please put a pull request )
 
