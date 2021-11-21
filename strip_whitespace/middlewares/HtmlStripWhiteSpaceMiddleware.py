@@ -6,7 +6,6 @@ This module strips unnecessary whitespaces from HTML.
 import asyncio
 from typing import List
 
-from .variables import *
 try:
     from python_strip_whitespace import minify_html
 except ImportError:
@@ -23,6 +22,8 @@ from django.conf import settings
 from django.utils.decorators import sync_and_async_middleware
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
+
+from .variables import *
 
 STRIP_WHITESPACE_MINIFY_IGNORED_PATHS: List = getattr(
     settings,
