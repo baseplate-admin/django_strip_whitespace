@@ -21,7 +21,7 @@ HTML Whitespace remover for Django
    
 Introduction :
 --------------
-A powerful tool to optimize HTML
+A powerful tool to optimize Django rendered templates
 
 Why use "django_stip_whitespace" ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,7 +47,7 @@ Why souldn't you use django_stip_whitespace ?
 Requirements :
 --------------
 
-*    minify-html
+*    python-strip-whitespace
 *    Django > 3 ( Should work with version 2? )
 *    Python 3 ( Should work with all version? )
 *    Brotli ( or BrotliPy ) | ( Optional )
