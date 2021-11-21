@@ -47,7 +47,7 @@ Why souldn't you use django_stip_whitespace ?
 Requirements :
 --------------
 
-*    `python-strip-whitespace <https://github.com/baseplate-admin/python_strip_whitespace>`
+*    `python-strip-whitespace <https://github.com/baseplate-admin/python_strip_whitespace>`_
 *    Django > 3 ( Should work with version 2? )
 *    Python 3 ( Should work with all version? )
 *    Brotli ( or BrotliPy ) | ( Optional )
