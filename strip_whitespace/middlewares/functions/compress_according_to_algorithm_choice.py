@@ -13,7 +13,10 @@ def compress(
 
     return_buffer: bytes = b""
 
-    if algorithm == str("gzip"):
+    if algorithm == str('plain'):
+        return_buffer = content
+        
+    elif algorithm == str("gzip"):
         from python_strip_whitespace.functions.compressors.gzip import (
             compress as gz_compress,
         )
