@@ -23,3 +23,5 @@ from .python import (
 from .ignored_paths import STRIP_WHITESPACE_MINIFY_IGNORED_PATHS
 
 from .nbsp_mangle_character import STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER
+
+from .compression import STRIP_WHITESPACE_COMPRESSION_TYPE

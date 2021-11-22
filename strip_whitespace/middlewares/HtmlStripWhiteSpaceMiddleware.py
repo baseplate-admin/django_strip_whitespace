@@ -37,11 +37,14 @@ def html_strip_whitespace(get_response):
     # One-time configuration and initialization goes here.
 
     ignored_paths: List = STRIP_WHITESPACE_MINIFY_IGNORED_PATHS
+
     if asyncio.iscoroutinefunction(get_response):
 
         async def middleware(request: HttpRequest):
             # Do something here!
             response = await get_response(request)
+            accepted_encodings = request.META.get("HTTP_ACCEPT_ENCODING", "")
+
             if not response.streaming and not request.path in ignored_paths:
                 content = minify_html(
                     response.content,
@@ -65,6 +68,8 @@ def html_strip_whitespace(get_response):
                     STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES,
                     # NBSP char
                     STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
+                    # Compression Settings
+                    STRIP_WHITESPACE_COMPRESSION_TYPE,
                 )
                 response.content = content
             return response
