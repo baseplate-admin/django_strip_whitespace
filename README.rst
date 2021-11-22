@@ -192,6 +192,25 @@ To change &nbsp; mangle character:
         
         STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER = 'ga' # Note that STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER is a python string
 
+Change Compression Settings :
+-----------------------------
+This module can do the work of django.gzip middleware. ( It can also do brotli, zstd 👀 )
+
+To change the compression algorithm ( by default using 'gzip' because it's a python stdlib): 
+   
+   .. code-block:: python
+      
+      # settings.py
+      STRIP_WHITESPACE_COMPRESSION_ALGORITHM = "gzip" or "br" or "zstd" or "plain"
+      
+      
+To use this module with django.gzip middleware ( or `django_brotli <https://github.com/illagrenan/django-brotli>`_ middleware ):
+  
+   .. code-block:: python
+   
+      # settings.py
+      STRIP_WHITESPACE_COMPRESSION_TYPE = 'compressed'
+
 
 Contributing :
 ==============
