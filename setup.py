@@ -8,6 +8,7 @@ long_description = (pathlib.Path(__file__).parent.resolve() / "README.rst").read
 
 packages = [
     "strip_whitespace.middlewares",
+    "strip_whitespace.middlewares.functions",
     "strip_whitespace.middlewares.variables",
 ]
 
@@ -28,7 +29,7 @@ install_requires = [
 
 setup_kwargs = setup(
     name="django-strip-whitespace",
-    version="0.2.1",
+    version="0.2.2",
     description="A powerful HTML whitespace remover for Django",
     long_description=long_description,
     author="baseplate-admin",

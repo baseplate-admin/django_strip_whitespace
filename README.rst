@@ -37,8 +37,8 @@ Why use "django_stip_whitespace" ?
 *   Is very customizable. ( You can configure lower level `minify-html <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ rust bindings and also the lower level `python <https://github.com/juancarlospaco/css-html-js-minify/blob/master/css_html_js_minify/html_minifier.py/>`_ bindings from settings.py )
 
 
-Why souldn't you use "django_stip_whitespace "?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Why souldn't you use "django_stip_whitespace" ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *   You don't like having unnecessary ';;' in your HTML. ( If you know any regex to fix this please put a pull request )
 
 *   Although I tried my best to use Compiled Language for Optimizations. It can still be sub miliseconds ( > 0.001 ) slower compared to normal Django Rendering. ( If you know any way to improve performance, please put a pull request )
@@ -200,5 +200,5 @@ If you have problems or suggestions please put them in the `Issue Tracker <https
 If you like to add features. Fork this repo and submit a Pull Request. 😛
 
 Updates ?? :
-===========
+============
 This repository is freezed. It will automatically install latest `python-strip-whitespace <https://github.com/baseplate-admin/python_strip_whitespace>`_
