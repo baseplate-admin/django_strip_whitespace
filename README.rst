@@ -221,3 +221,7 @@ If you like to add features. Fork this repo and submit a Pull Request. 😛
 Updates ?? :
 ============
 This repository is freezed. It will automatically install latest `python-strip-whitespace <https://github.com/baseplate-admin/python_strip_whitespace>`_
+
+Special Thanks to :
+===================
+*    `alfonsrv <https://github.com/alfonsrv>`_ : For making me `realize <https://www.reddit.com/r/django/comments/qyqxht/comment/hlj3rzb/?utm_source=share&utm_medium=web2x&context=3>`_ that this module can be used without django gzip middleware
