@@ -19,11 +19,12 @@ except ImportError:
     )
 
 from django.conf import settings
-from django.utils.decorators import sync_and_async_middleware
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
+from django.utils.decorators import sync_and_async_middleware
 
 from .variables import *
+from .functions import compress, add_headers
 
 STRIP_WHITESPACE_MINIFY_IGNORED_PATHS: List = getattr(
     settings,
@@ -43,7 +44,6 @@ def html_strip_whitespace(get_response):
         async def middleware(request: HttpRequest):
             # Do something here!
             response = await get_response(request)
-            accepted_encodings = request.META.get("HTTP_ACCEPT_ENCODING", "")
 
             if not response.streaming and not request.path in ignored_paths:
                 content = minify_html(
@@ -71,14 +71,23 @@ def html_strip_whitespace(get_response):
                     # Compression Settings
                     STRIP_WHITESPACE_COMPRESSION_TYPE,
                 )
-                response.content = content
+                response.content = compress(
+                    buffer=content,
+                    algorithm=STRIP_WHITESPACE_COMPRESSION_ALGORITHM,
+                )
+                add_headers(
+                    request,
+                    response,
+                    STRIP_WHITESPACE_COMPRESSION_ALGORITHM,
+                )
             return response
 
     else:
         # Sync
         def middleware(request: HttpRequest) -> HttpResponse:
             # Do something here!
-            response = get_response(request)
+            response: HttpResponse = get_response(request)
+
             if not response.streaming and not request.path in ignored_paths:
                 content = minify_html(
                     response.content,
@@ -103,7 +112,16 @@ def html_strip_whitespace(get_response):
                     # NBSP char
                     STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
                 )
-                response.content = content
+                response.content = compress(
+                    buffer=content,
+                    algorithm=STRIP_WHITESPACE_COMPRESSION_ALGORITHM,
+                )
+                add_headers(
+                    request,
+                    response,
+                    STRIP_WHITESPACE_COMPRESSION_ALGORITHM,
+                )
+
             return response
 
     return middleware
