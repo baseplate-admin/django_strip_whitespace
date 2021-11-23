@@ -11,8 +11,13 @@ try:
 except ImportError:
     raise ImportError(
         """
+        'minify_html' function missing
+
             Did you install the latest python_strip_whitespace?
-            
+
+            First uninstall it by:
+                python -m pip uninstall python_strip_whitespace
+                
             If not install it by:
                 python -m pip install python_strip_whitespace
         """
