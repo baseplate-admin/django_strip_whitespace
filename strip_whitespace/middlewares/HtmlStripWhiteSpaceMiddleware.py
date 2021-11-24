@@ -1,14 +1,18 @@
 """
 This module strips unnecessary whitespaces from HTML.
     Author : Baseplate-Admin
+    LICENSE : GPL v3 ( only )
 """
 
 import asyncio
 from typing import List
+import logging
 
 try:
     from python_strip_whitespace import minify_html
+
 except ImportError:
+    # Module is not there.🥲 So show error.
     raise ImportError(
         """
         'minify_html' function missing
@@ -31,6 +35,9 @@ from django.utils.decorators import sync_and_async_middleware
 from .variables import *
 from .functions import compress, add_headers
 
+# Import Logger so we can show some warnings.
+logger = logging.getLogger(__name__)
+
 STRIP_WHITESPACE_MINIFY_IGNORED_PATHS: List = getattr(
     settings,
     "STRIP_WHITESPACE_MINIFY_IGNORED_PATHS",
@@ -43,6 +50,18 @@ def html_strip_whitespace(get_response):
     # One-time configuration and initialization goes here.
 
     ignored_paths: List = STRIP_WHITESPACE_MINIFY_IGNORED_PATHS
+
+    if len(str(STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER)) >= 5:
+        logger.warning(
+            f"""
+            STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER length is longer than 5
+                
+                |> Current Length : {len(str(STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER))}
+                |> Current Character : {str(STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER)}
+
+            Please switch the character something smaller for best performance.
+            """
+        )
 
     if asyncio.iscoroutinefunction(get_response):
 

@@ -15,13 +15,11 @@ def add(
         str("plain"),
     ] = str("gz"),
 ):
-    accepted_encodings = request.META.get(
-        "HTTP_ACCEPT_ENCODING", ""  # Has gzip, deflate by default
-    )
+    accepted_encodings = request.META.get("HTTP_ACCEPT_ENCODING", "")
 
     if algorithm == str("plain"):
         """
-        If algorithm is text/plain rdon't do anything
+        If algorithm is text/plain don't do anything 🤷‍♂️
         """
 
         response.headers["Content-Encoding"] = "text/plain; charset:utf-8"
@@ -36,7 +34,7 @@ def add(
 
     elif algorithm != str("plain") and algorithm not in accepted_encodings:
         """
-        Developer has chosen an algorithm that's not accepted by the browser.
+        Developer has chosen an algorithm that's not accepted by the browser. 🤦‍♂️
             So raise an error and explain the error.
         """
 
@@ -45,15 +43,17 @@ def add(
             Error in 'strip_whitespace.middlewares.functions.add_headers'
 
                 Accepted HTTP ENCODING = { accepted_encodings }
-                
+
                     Please switch { algorithm } to any of these : { accepted_encodings } in settings.py
         """
         )
 
     else:
+        # Something crazy is going on here. 😱 ( There might be ghosts lurking around here 👀 )
+
         raise ValueError(
             f"""
-                'algorithm' in 'strip_whitespace.add_header' must be one of these four.
+                'algorithm' in 'strip_whitespace.add_header' must be one of these:
                     |> gzip
                     |> br ( Brotli )
                     |> zstd ( ZStandard )
