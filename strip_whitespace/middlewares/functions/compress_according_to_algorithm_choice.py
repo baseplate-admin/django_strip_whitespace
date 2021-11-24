@@ -5,7 +5,13 @@ def compress(
     # HTML should always be sent in bytes 🔢
     return_buffer: bytes = b""
 
-    if algorithm == str("gzip"):
+    if algorithm == str("plain"):
+        """
+        If algorithm is text/plain don't do anything 🤷‍♂️
+        """
+        return_buffer = buffer
+
+    elif algorithm == str("gzip"):
         try:
             from python_strip_whitespace.functions.compressors.gzip import (
                 compress as gz_compress,
