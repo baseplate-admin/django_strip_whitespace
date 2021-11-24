@@ -74,6 +74,18 @@ def compress(
 
         return_buffer = zstd_compress(buffer)
     else:
-        raise AttributeError
+        raise AttributeError(
+            f"""
+            
+            Error in 'strip_whitespace.middlewares.functions.compress_according_to_algorithm_choice'
+                    Compression algorithm not any of these:
+                        |> str("gzip")
+                        |> str("br")
+                        |> str("zstd")
+                        |> str("plain")
+
+                    Currently the Algorithm is : { algorithm }
+            """
+        )
 
     return return_buffer
