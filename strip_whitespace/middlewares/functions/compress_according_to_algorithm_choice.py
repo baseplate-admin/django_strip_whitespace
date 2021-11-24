@@ -1,6 +1,6 @@
 def compress(
     buffer: bytes,
-    algorithm: str("gzip") | str("br") | str("zstd") | str("plain") = str("gzip"),
+    algorithm: str("gzip") or str("br") or str("zstd") or str("plain") = str("gzip"),
 ) -> bytes:
     # HTML should always be sent in bytes 🔢
     return_buffer: bytes = b""
