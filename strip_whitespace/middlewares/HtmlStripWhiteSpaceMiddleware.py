@@ -51,18 +51,44 @@ def html_strip_whitespace(get_response):
 
     ignored_paths: List = STRIP_WHITESPACE_MINIFY_IGNORED_PATHS
 
+    #   Errors ⚠️
+    #   Checked here ✔️ | ❌
+
+    #  ⚠️ Length of STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER is too long
     if len(str(STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER)) >= 5:
         logger.warning(
             f"""
             STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER length is longer than 5
                 
-                |> Current Length : {len(str(STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER))}
-                |> Current Character : {str(STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER)}
+                |> Current Length : { len(str(STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER)) }
+                |> Current Character : { str(STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER) }
 
             Please switch the character something smaller for best performance.
             """
         )
 
+    # ❌ Compression algorithm is not part of module
+    if str(STRIP_WHITESPACE_COMPRESSION_ALGORITHM) not in [
+        str("gzip"),
+        str("br"),
+        str("zstd"),
+        str("plain"),
+    ]:
+        raise ValueError(
+            f"""
+                Error in strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware
+
+                    Current compression algorithm : { str(STRIP_WHITESPACE_COMPRESSION_ALGORITHM) }
+
+                    It must be one of :
+                        |>  gzip
+                        |>  br
+                        |>  zstd
+                        |>  plain ( no compression )
+            """
+        )
+
+    # Async function
     if asyncio.iscoroutinefunction(get_response):
 
         async def middleware(request: HttpRequest):
@@ -107,7 +133,7 @@ def html_strip_whitespace(get_response):
             return response
 
     else:
-        # Sync
+        # Sync Function
         def middleware(request: HttpRequest) -> HttpResponse:
             # Do something here!
             response: HttpResponse = get_response(request)
