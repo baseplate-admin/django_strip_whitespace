@@ -85,6 +85,8 @@ def html_strip_whitespace(get_response):
                         |>  br
                         |>  zstd
                         |>  plain ( no compression )
+
+                    Please change it in settings.py 
             """
         )
 
