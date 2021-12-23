@@ -85,18 +85,18 @@ Install with pip from github ( Development | Not Recommended for Production )::
 
 Then include it in your django project:
    
-   .. code-block:: python
-   
-        MIDDLEWARE = [
-           ...
-           "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.html_strip_whitespace",
-        ]
+.. code-block:: python
+
+    MIDDLEWARE = [
+        ...
+        "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.html_strip_whitespace",
+    ]
 
 Or if you like:
    
-   .. code-block:: python
-   
-        MIDDLEWARE += "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.html_strip_whitespace"
+.. code-block:: python
+
+    MIDDLEWARE += "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.html_strip_whitespace"
 
 Customization :
 ===============
@@ -112,28 +112,28 @@ The module allows `rust <https://github.com/wilsonzlin/minify-html>`_ minifier o
 
 The bindings are ( by default set to True ):
 
-    .. code-block:: python
+.. code-block:: python
 
-        STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE, # passes do_not_minify_doctype to minify-html
-        STRIP_WHITESPACE_RUST_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES, # passes ensure_spec_compliant_unquoted_attribute_values to minify-html
-        STRIP_WHITESPACE_RUST_KEEP_CLOSING_TAGS, # passes keep_closing_tags to minify-html
-        STRIP_WHITESPACE_RUST_KEEP_COMMENTS, # passes keep_comments to minify-html
-        STRIP_WHITESPACE_RUST_KEEP_HTML_AND_HEAD_OPENING_TAGS, # passes keep_html_and_head_opening_tags to minify-html
-        STRIP_WHITESPACE_RUST_KEEP_SPACES_BETWEEN_ATTRIBUTES, # passes keep_spaces_between_attributes to minify-html
-        STRIP_WHITESPACE_RUST_MINIFY_CSS, # passes minify_css to minify-html
-        STRIP_WHITESPACE_RUST_MINIFY_JS, # passes minify_js to minify-html
-        STRIP_WHITESPACE_RUST_REMOVE_BANGS, # passes remove_bangs to minify-html
-        STRIP_WHITESPACE_RUST_REMOVE_PROCESSING_INSTRUCTIONS, # passes remove_processing_instructions to minify-html
+    STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE, # passes do_not_minify_doctype to minify-html
+    STRIP_WHITESPACE_RUST_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES, # passes ensure_spec_compliant_unquoted_attribute_values to minify-html
+    STRIP_WHITESPACE_RUST_KEEP_CLOSING_TAGS, # passes keep_closing_tags to minify-html
+    STRIP_WHITESPACE_RUST_KEEP_COMMENTS, # passes keep_comments to minify-html
+    STRIP_WHITESPACE_RUST_KEEP_HTML_AND_HEAD_OPENING_TAGS, # passes keep_html_and_head_opening_tags to minify-html
+    STRIP_WHITESPACE_RUST_KEEP_SPACES_BETWEEN_ATTRIBUTES, # passes keep_spaces_between_attributes to minify-html
+    STRIP_WHITESPACE_RUST_MINIFY_CSS, # passes minify_css to minify-html
+    STRIP_WHITESPACE_RUST_MINIFY_JS, # passes minify_js to minify-html
+    STRIP_WHITESPACE_RUST_REMOVE_BANGS, # passes remove_bangs to minify-html
+    STRIP_WHITESPACE_RUST_REMOVE_PROCESSING_INSTRUCTIONS, # passes remove_processing_instructions to minify-html
 
 If you would like to change any of the above variables, simply put them in settings.py ( Please note that every variable here is a python boolean ).
 
 For example:
 
-    .. code-block:: python
+.. code-block:: python
 
-        # settings.py
+    # settings.py
 
-        STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE = False
+    STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE = False
 
 Python :
 ~~~~~~~~
@@ -142,25 +142,25 @@ The module allows python minifier options to be changed from Django's settings.p
 
 The bindings are ( by default set to a sane value ):
 
-    .. code-block:: python
+.. code-block:: python
 
-        STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS, # False | removes comments from HTML using python ( not recommended cause rust can do that just fine and fast )
-        STRIP_WHITESPACE_PYTHON_CONDENSE_STYLE_FROM_HTML, # True | replaces '<style text/css>' -> '<style>'
-        STRIP_WHITESPACE_PYTHON_CONDENSE_SCRIPT_FROM_HTML, # True | replaces '<script text/javascript>' -> '<script>'
-        STRIP_WHITESPACE_PYTHON_CLEAN_UNNEEDED_HTML_TAGS, # True | removes some unnecessary tags
-        STRIP_WHITESPACE_PYTHON_CONDENSE_HTML_WHITESPACE, # True | This is where the magic happens.
-        STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES, # True | This is also a magic module.
-       
+    STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS, # False | removes comments from HTML using python ( not recommended cause rust can do that just fine and fast )
+    STRIP_WHITESPACE_PYTHON_CONDENSE_STYLE_FROM_HTML, # True | replaces '<style text/css>' -> '<style>'
+    STRIP_WHITESPACE_PYTHON_CONDENSE_SCRIPT_FROM_HTML, # True | replaces '<script text/javascript>' -> '<script>'
+    STRIP_WHITESPACE_PYTHON_CLEAN_UNNEEDED_HTML_TAGS, # True | removes some unnecessary tags
+    STRIP_WHITESPACE_PYTHON_CONDENSE_HTML_WHITESPACE, # True | This is where the magic happens.
+    STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES, # True | This is also a magic module.
+
 
 If you would like to change any of the above variables, simply put them in settings.py ( Please note that every variable here is a python boolean )
 
 For example:
 
-    .. code-block:: python
+.. code-block:: python
 
-        # settings.py
+    # settings.py
 
-        STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS = True 
+    STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS = True 
 
 Change Ignored Paths :
 ----------------------
@@ -171,11 +171,11 @@ Then you can add it to ignored path. ( By default it ignores '/sitemap.xml' )
 
 To customize ignored path:
 
-    .. code-block:: python
-        
-        # settings.py
+.. code-block:: python
 
-        STRIP_WHITESPACE_MINIFY_IGNORED_PATHS.append("/robots.txt") # Note that STRIP_WHITESPACE_MINIFY_IGNORED_PATHS is a Python List
+    # settings.py
+
+    STRIP_WHITESPACE_MINIFY_IGNORED_PATHS.append("/robots.txt") # Note that STRIP_WHITESPACE_MINIFY_IGNORED_PATHS is a Python List
 
 Change NBSP Mangle Character :
 ------------------------------
@@ -186,34 +186,34 @@ If for some reason this character is causing problem in your HTML. You can chang
 
 To change &nbsp; mangle character:
 
-    .. code-block:: python
+.. code-block:: python
 
-        # settings.py
+    # settings.py
 
-        # Keep the string as  short as possible.
-        # If you make it long,
-        # the python str.replace() method will use more CPU and RAM thus slowing your site down.
-        
-        STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER = 'ga' # Note that STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER is a python string
+    # Keep the string as  short as possible.
+    # If you make it long,
+    # the python str.replace() method will use more CPU and RAM thus slowing your site down.
+
+    STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER = 'ga' # Note that STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER is a python string
 
 Change Compression Settings :
 -----------------------------
 This module can do the work of django.gzip middleware. ( It can also do brotli, zstd 👀 )
 
 To change the compression algorithm ( by default using 'gzip' because it's a python stdlib): 
-   
-   .. code-block:: python
-      
-      # settings.py
-      STRIP_WHITESPACE_COMPRESSION_ALGORITHM = "gzip" or "br" or "zstd" or "plain"
-      
-      
+
+.. code-block:: python
+
+  # settings.py
+  STRIP_WHITESPACE_COMPRESSION_ALGORITHM = "gzip" or "br" or "zstd" or "plain"
+
+
 To use this module with django.gzip middleware ( or `django_brotli <https://github.com/illagrenan/django-brotli>`_ middleware ):
-  
-   .. code-block:: python
-   
-      # settings.py
-      STRIP_WHITESPACE_COMPRESSION_TYPE = 'compressed'
+
+.. code-block:: python
+
+  # settings.py
+  STRIP_WHITESPACE_COMPRESSION_TYPE = 'compressed'
 
 
 Contributing :
