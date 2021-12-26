@@ -63,15 +63,21 @@ User guide :
 Installation :
 --------------
 
-Install with pip from pypi (No extra dependencies)::
+Install with pip from pypi (No extra dependencies):
+
+.. code-block:: python
 
       $ python -m pip install django_strip_whitespace
 
-Install with pip with Brotli support::
+Install with pip with Brotli support:
+
+.. code-block:: python
 
       $ python -m pip install django_strip_whitespace[brotli]
 
-Same but with Zstandard support::
+Same but with Zstandard support:
+
+.. code-block:: python
 
       $ python -m pip install django_strip_whitespace[zstd]
 
