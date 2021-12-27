@@ -36,12 +36,12 @@ Why use "django_stip_whitespace" ?
 *   It compiles regex at runtime. So it's blazing fast.
 *   It speeds up website by reducing the HTML size.
 *   Drop in replacement for 'django.gzip.GzipMiddleware'.
-*   Its mostly based on C ( gzip ) and Rust ( `minify-html <https://pypi.org/project/minify-html/>`__  ) libraries.
+*   Its mostly based on C ( gzip ) and Rust ( `minify-html <https://pypi.org/project/minify-html/>`_  ) libraries.
 *   Significantly lower bytes transferred when working with frameworks like AlpineJs ( Almost fully working & Please open a issue in the `Issue Tracker <https://github.com/baseplate-admin/django_strip_whitespace/issues>`__ if you encounter any bug) & Petite Vue.
 *   Is very customizable. ( You can configure lower level `minify-html <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ rust bindings and also the lower level `python <https://github.com/juancarlospaco/css-html-js-minify/blob/master/css_html_js_minify/html_minifier.py/>`_ bindings from settings.py )
 
 
-Why souldn't you use "django_stip_whitespace" ?
+Why shouldn't you use "django_stip_whitespace" ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *   You don't like having unnecessary ';;' in your HTML. ( If you know any regex to fix this please put a pull request )
 
