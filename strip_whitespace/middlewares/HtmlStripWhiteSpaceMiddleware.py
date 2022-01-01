@@ -123,15 +123,9 @@ def html_strip_whitespace(get_response):
                     # Compression Settings
                     STRIP_WHITESPACE_COMPRESSION_TYPE,
                 )
-                response.content = compress(
-                    buffer=content,
-                    algorithm=STRIP_WHITESPACE_COMPRESSION_ALGORITHM,
-                )
-                add_headers(
-                    request,
-                    response,
-                    STRIP_WHITESPACE_COMPRESSION_ALGORITHM,
-                )
+                response.content = content
+
+              
             return response
 
     else:
@@ -164,15 +158,8 @@ def html_strip_whitespace(get_response):
                     # NBSP char
                     STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
                 )
-                response.content = compress(
-                    buffer=content,
-                    algorithm=STRIP_WHITESPACE_COMPRESSION_ALGORITHM,
-                )
-                add_headers(
-                    request,
-                    response,
-                    STRIP_WHITESPACE_COMPRESSION_ALGORITHM,
-                )
+                response.content = content
+
 
             return response
 
